@@ -16,17 +16,19 @@ export const authOptions: NextAuthOptions = {
             },
             async authorize(credentials: any): Promise<any> {
                 await dbconnect();
+                // console.log(credentials);
                 try {
                     const user = await UserModel.findOne({
                         $or: [
-                            { email: credentials.indentifier },
-                            { username: credentials.indentifier }
+                            { email: credentials.identifier },
+                            { username: credentials.identifier }
                         ]
                     })
+                    console.log(user)
                     if (!user) {
                         throw new Error("No User Found With this Email")
                     }
-                    if (user.isVerified) {
+                    if (!user.isVerified) {
                         throw new Error("Please Verify Your Account Before Login")
                     }
                     const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password)
@@ -43,8 +45,8 @@ export const authOptions: NextAuthOptions = {
         })
     ],
     callbacks: {
-        async jwt({ token, user}) {
-            if(user){
+        async jwt({ token, user }) {
+            if (user) {
                 token._id = user._id?.toString()
                 token.isVerified = user.isVerified
                 token.isAcceptingMessages = user.isAcceptingMessages;
@@ -53,7 +55,7 @@ export const authOptions: NextAuthOptions = {
             return token
         },
         async session({ session, token }) {
-            if(token){
+            if (token) {
                 session.user._id = token._id?.toString()
                 session.user.isVerified = token.isVerified
                 session.user.isAcceptingMessages = token.isAcceptingMessages
@@ -65,9 +67,8 @@ export const authOptions: NextAuthOptions = {
     pages: {
         signIn: "/sign-in"
     },
-    
+    secret: process.env.NEXTAUTH_SECRET,
     session: {
         strategy: "jwt"
     },
-    secret: process.env.NEXTAUTH_SECRET,
 }

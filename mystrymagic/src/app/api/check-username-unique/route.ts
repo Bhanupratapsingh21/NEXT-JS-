@@ -51,7 +51,7 @@ export async function GET(request: Request) {
 
         return Response.json({
             success : true,
-            message : "Username is Unique "
+            message : "Username is unique"
         },{status: 200});
 
     } catch (error) {

@@ -8,6 +8,7 @@ export async function POST(request: Request) {
     try {
         const { username, code } = await request.json();
         const decodeUsername = decodeURIComponent(username)
+        console.log(decodeUsername)
         const User = await UserModel.findOne({
             username: decodeUsername
         })
@@ -17,7 +18,7 @@ export async function POST(request: Request) {
                 message: "User not Found"
             },
                 {
-                    status: 500
+                    status: 404
                 })
         }
         const isCodeVaild = User.verifyCode === code
