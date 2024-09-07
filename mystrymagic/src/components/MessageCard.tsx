@@ -22,22 +22,35 @@ import React from "react"
 import { X } from "lucide-react"
 import { Message } from "@/model/user.model"
 import { useToast } from "@/hooks/use-toast"
-import axios from "axios"
+import axios, { AxiosError } from "axios"
 import { ApiResponse } from "@/types/ApiResponse"
 
 type MessageCardProps = {
-    message: Message
-    onMessageDelete: (messageid: string) => void
-}
+    message: Message;
+    onMessageDelete: (messageId: string) => void;
+};
 
 const MessageCard = ({ message, onMessageDelete }: MessageCardProps) => {
-    const toast = useToast();
-    const handledeleteConform = async() => {
-       const response = await axios.delete<ApiResponse>(`/api/delete-message/${message._id}`)
-       toast({
-        title : response.data.message
-       })
-       onMessageDelete(messsage._id)
+
+    const { toast } = useToast();
+    const handleDeleteConfirm = async () => {
+        try {
+            const response = await axios.delete<ApiResponse>(
+                `/api/delete-message/${message._id}`
+            );
+            toast({
+                title: response.data.message,
+            });
+            onMessageDelete(message._id);
+        } catch (error) {
+            const axiosError = error as AxiosError<ApiResponse>;
+            toast({
+                title: 'Error',
+                description:
+                    axiosError.response?.data.message ?? 'Failed to delete message',
+                variant: 'destructive',
+            });
+        }
     };
     return (
         <>
@@ -58,17 +71,17 @@ const MessageCard = ({ message, onMessageDelete }: MessageCardProps) => {
                             </AlertDialogHeader>
                             <AlertDialogFooter>
                                 <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                <AlertDialogAction onClick={handledeleteConform}>Continue</AlertDialogAction>
+                                <AlertDialogAction onClick={handleDeleteConfirm}>Continue</AlertDialogAction>
                             </AlertDialogFooter>
                         </AlertDialogContent>
                     </AlertDialog>
                     <CardDescription></CardDescription>
                 </CardHeader>
                 <CardContent>
-                   
+
                 </CardContent>
                 <CardFooter>
-                    
+
                 </CardFooter>
             </Card>
         </>

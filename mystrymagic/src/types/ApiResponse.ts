@@ -3,6 +3,6 @@ import { Message } from "postcss";
 export interface ApiResponse{
     success : boolean;
     message: string;
-    isAccesptingMessages?:boolean;
+    isAcceptingMessages?:boolean;
     messages? : Array<Message>
 }
