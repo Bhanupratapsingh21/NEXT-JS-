@@ -9,7 +9,7 @@ const Card = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "rounded-lg border bg-card text-card-foreground shadow-sm",
+      "bg-white/30 mx-auto w-screen max-w-lg  backdrop-blur-xl rounded-lg shadow-lg",
       className
     )}
     {...props}
@@ -77,3 +77,23 @@ const CardFooter = React.forwardRef<
 CardFooter.displayName = "CardFooter"
 
 export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
+/*
+<div className="brutal-subscribe">
+                <div ">
+
+                    <form className="brutal-subscribe__form p-5">
+                        <input
+                            type="email"
+                            className="brutal-subscribe__input w-full py-2 px-3 border-2 border-black mb-3 transition-transform duration-300 focus:outline-none focus:bg-yellow-400 focus:scale-105"
+                            placeholder="YOUR@EMAIL.COM"
+                            required
+                        />
+                        <button type="submit" className="brutal-subscribe__button w-3/5 py-2 bg-black text-white border-2 border-black font-bold text-lg relative transition-all duration-300 hover:bg-yellow-400 hover:text-black">
+                            SUBSCRIBE
+                            <span className="absolute top-1/2 right-[-30px] transform -translate-y-1/2 transition-all duration-300">→</span>
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+*/

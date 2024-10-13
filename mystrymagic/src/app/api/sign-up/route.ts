@@ -57,15 +57,14 @@ export async function POST(request: Request) {
                 password: hashedPassword,
                 verifyCode,
                 verifyCodeExpiry: expiryDate,
-                isVerified: false,
+                isVerified: true,
                 isAcceptingMessage: true,
                 messages: []
             });
             await newUser.save();
         }
-        console.log(verifyCode)
-        // Send verification email
-        const emailResponse = await sendVerificationEmail(email, username, verifyCode);
+       
+        /*const emailResponse = await sendVerificationEmail(email, username, verifyCode);
         if (!emailResponse.success) {
             return NextResponse.json(
                 {
@@ -76,12 +75,12 @@ export async function POST(request: Request) {
                     status: 500
                 }
             );
-        }
+        }*/
 
         return NextResponse.json(
             {
                 success: true,
-                message: "User registered successfully. Please verify your email."
+                message: "User registered successfully. Pls Login"
             },
             {
                 status: 200

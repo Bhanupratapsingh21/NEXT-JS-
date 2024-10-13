@@ -24,12 +24,16 @@ export default function RootLayout({
         <body className={inter.className}>
           <Navbar />
           {children}
-          <footer className="text-center bottom-0 p-4 md:p-6 bg-gray-900 text-white">
-            © 2023 True Feedback. All rights reserved.
-          </footer>
+          
           <Toaster />
         </body>
       </AuthProvider>
     </html>
   );
 }
+/*
+<footer className="text-center bottom-0 p-4 md:p-6 bg-gray-900 text-white">
+            © 2023 True Feedback. All rights reserved.
+          </footer>
+
+*/

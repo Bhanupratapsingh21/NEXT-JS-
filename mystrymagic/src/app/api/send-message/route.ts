@@ -6,7 +6,8 @@ import dbconnect from "@/lib/dbConnect";
 export async function POST(request: Request) {
     await dbconnect();
 
-    const { username, content } = await request.json()
+    const { username, anonymousname, content } = await request.json()
+    console.log(anonymousname);
     try {
         const user = await UserModel.findOne({ username })
         if (!user) {
@@ -26,7 +27,7 @@ export async function POST(request: Request) {
             return Response.json(
                 {
                     success: false,
-                    message: "User Not Found"
+                    message: "Currently This User Is Not Accpeting MSG'S"
                 },
                 {
                     status: 403
@@ -34,9 +35,14 @@ export async function POST(request: Request) {
             )
         }
 
-        const newMessage = { content, createdAt: new Date() }
+        const newMessage = {
+            content,
+            anonymousname: anonymousname || "Anonymous", // Fallback to "Anonymous"
+            createdAt: new Date()
+        };
         user.messages.push(newMessage as Message)
         await user.save();
+        console.log(user.messages)
         return Response.json(
             {
                 success: true,
@@ -46,6 +52,7 @@ export async function POST(request: Request) {
                 status: 200
             }
         )
+
     } catch (error) {
         console.log("Error While getting Msgs")
         return Response.json(

@@ -2,21 +2,25 @@ import mongoose, { Schema, Document } from "mongoose";
 
 export interface Message extends Document {
     content: string;
+    anonymousname: string;
     createdAt: Date
 }
-
 const MessageSchema: Schema<Message> = new Schema({
     content: {
         type: String,
         required: true
     },
+    anonymousname: {
+        type: String,
+        required: true,
+        default: "Anonymous" 
+    },
     createdAt: {
         type: Date,
         required: true,
-        defaults: Date.now
+        default: Date.now 
     }
 });
-
 
 export interface User extends Document {
     username: string;
@@ -45,7 +49,6 @@ const userSchema: Schema<User> = new Schema({
     },
     password: {
         type: String,
-        required: [true, "Username Is Required"],
     },
     verifyCode: {
         type: String,

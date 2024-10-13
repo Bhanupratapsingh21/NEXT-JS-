@@ -1,4 +1,5 @@
 'use client'
+import React, { useEffect, useState } from 'react'
 import Image from "next/image";
 import {
   Carousel,
@@ -37,17 +38,60 @@ export default function Home() {
     }
   ]
 
+  const designbg = [
+    "bg-gradient-to-tr from-blue-500 to-purple-600 text-white", // Example background styles
+    "bg-gradient-to-tr from-green-400 to-yellow-500 text-white",
+    "bg-gradient-to-r from-pink-500 to-orange-500 text-white",
+    "bg-gradient-to-bl from-indigo-500 to-cyan-500 text-white",
+    "bg-gradient-to-br from-blue-400 to-purple-400 text-white shadow-lg shadow-gray-200/50 overflow-hidden",
+    "bg-white overflow-hidden cursor-pointer text-white  before:absolute before:w-full before:h-full before:blur-[20px] before:bg-[#faff99] before:bg-[radial-gradient(at_33%_82%,_hsla(254,71%,69%,1)_0px,_transparent_50%),radial-gradient(at_28%_4%,_hsla(289,96%,63%,1)_0px,_transparent_50%),radial-gradient(at_69%_49%,_hsla(309,91%,71%,1)_0px,_transparent_50%),radial-gradient(at_94%_14%,_hsla(232,66%,62%,1)_0px,_transparent_50%),radial-gradient(at_19%_93%,_hsla(51,98%,74%,1)_0px,_transparent_50%),radial-gradient(at_15%_80%,_hsla(194,87%,63%,1)_0px,_transparent_50%),radial-gradient(at_56%_52%,_hsla(109,71%,61%,1)_0px,_transparent_50%)] after:bg-[rgba(255,255,255,0.5)]",
+    "bg-gradient-to-tr from-[#4158d0] via-[#1888b4] text-white to-[#0f31ca] shadow-[inset_0_-23px_25px_rgba(0,0,0,0.17),inset_0_-36px_30px_rgba(0,0,0,0.15),inset_0_-79px_40px_rgba(0,0,0,0.1),0_2px_1px_rgba(0,0,0,0.06),0_4px_2px_rgba(0,0,0,0.09),0_8px_4px_rgba(0,0,0,0.09),0_16px_8px_rgba(0,0,0,0.09),0_32px_16px_rgba(0,0,0,0.09)]",
+    " bg-gradient-to-tr from-[#4158D0] via-[#C850C0] text-white to-[#FFCC70] shadow-[inset_0_-23px_25px_rgba(0,0,0,0.17),inset_0_-36px_30px_rgba(0,0,0,0.15),inset_0_-79px_40px_rgba(0,0,0,0.1),0_2px_1px_rgba(0,0,0,0.06),0_4px_2px_rgba(0,0,0,0.09),0_8px_4px_rgba(0,0,0,0.09),0_16px_8px_rgba(0,0,0,0.09),0_32px_16px_rgba(0,0,0,0.09)]"
+  ];
+
+  const [rendomno, setRendomno] = useState(0);
+
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * designbg.length); // Generate a random index
+    setRendomno(randomIndex);
+  }, []);
+
   return (
     <>
-      <div>
-        <main className="flex-grow h-auto flex flex-col items-center justify-center px-4 md:px-24 py-12 bg-gray-800 text-white">
+      <div className={`w-screen h-screen  ${designbg[rendomno]}`}>
+        <main className="flex-grow pt-36  lg:h-[calc(100vh-0.1rem)] flex flex-col items-center justify-center px-4 md:px-24 py-12 ">
           <section className="text-center mb-8 md:mb-12">
-            <h1 className="text-3xl md:text-5xl font-bold">
-              Dive into the World of Anonymous Feedback
-            </h1>
-            <p className="mt-3 md:mt-4 text-base md:text-lg">
-              True Feedback - Where your identity remains a secret.
-            </p>
+            <div
+              className="mx-auto w-full  flex flex-col items-center justify-center text-center overflow-visible"
+            > 
+              <h3 className="text-5xl z-50 mb-2 font-bold">Dive into the World of Anonymous Feedback</h3>
+              <div className="w-full relative flex flex-col items-center justify-center">
+                <div
+                  className="absolute inset-x-auto top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-full blur-sm"
+                ></div>
+                <div
+                  className="absolute inset-x-auto top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-full"
+                ></div>
+                <div
+                  className="absolute inset-x-auto top-0 bg-gradient-to-r from-transparent via-purple-400 to-transparent h-[5px] w-1/2 blur-sm"
+                ></div>
+                <div
+                  className="absolute inset-x-auto top-0 bg-gradient-to-r from-transparent via-purple-400 to-transparent h-px w-1/2"
+                ></div>
+                <div
+
+                  className="absolute inset-0 w-full h-full bg-background [mask-image:radial-gradient(50%_200px_at_top,transparent_20%,white)]"
+                ></div>
+              </div>
+              <p className="mt-3 text-lg">
+                WhisperBox - Where your identity remains a secret.
+              </p>
+
+              <span
+                className="absolute -z-[1] backdrop-blur-sm inset-0 w-full h-full flex before:content-[''] before:h-3/4 before:w-full before:bg-gradient-to-r before:from-black before:to-purple-600 before:blur-[90px] after:content-[''] after:h-1/2 after:w-full after:bg-gradient-to-br after:from-cyan-400 after:to-sky-300 after:blur-[90px]"
+              ></span>
+            </div>
+
           </section>
 
           {/* Carousel for Messages */}
@@ -66,7 +110,7 @@ export default function Home() {
                       <Mail className="flex-shrink-0" />
                       <div>
                         <p>{message.content}</p>
-                        <p className="text-xs text-muted-foreground">
+                        <p className="text-xs text-white text-muted-foreground">
                           {message.received}
                         </p>
                       </div>

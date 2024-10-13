@@ -17,14 +17,16 @@ export async function GET(request: Request) {
         );
     }
     const userId = new mongoose.Types.ObjectId(_user._id);
+    // console.log(userId)
     try {
         const user = await UserModel.aggregate([
             { $match: { _id: userId } },
-            { $unwind: '$messages' },
-            { $sort: { 'messages.createdAt': -1 } },
-            { $group: { _id: '$_id', messages: { $push: '$messages' } } },
+            { $unwind: { path: '$messages', preserveNullAndEmptyArrays: true } },  // Preserve users without messages
+            { $sort: { 'messages.createdAt': -1 } },  // Sort by message date
+            { $group: { _id: '$_id', messages: { $push: '$messages' } } },  // Regroup messages into an array
         ]).exec();
 
+        // console.log(user); 670b9eb94f9af6edd492d75f 670b9eb94f9af6edd492d75f
         if (!user || user.length === 0) {
             return Response.json(
                 { message: 'User not found', success: false },
