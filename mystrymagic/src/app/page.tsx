@@ -44,9 +44,8 @@ export default function Home() {
     "bg-gradient-to-r from-pink-500 to-orange-500 text-white",
     "bg-gradient-to-bl from-indigo-500 to-cyan-500 text-white",
     "bg-gradient-to-br from-blue-400 to-purple-400 text-white shadow-lg shadow-gray-200/50 overflow-hidden",
-    "bg-white overflow-hidden cursor-pointer text-white  before:absolute before:w-full before:h-full before:blur-[20px] before:bg-[#faff99] before:bg-[radial-gradient(at_33%_82%,_hsla(254,71%,69%,1)_0px,_transparent_50%),radial-gradient(at_28%_4%,_hsla(289,96%,63%,1)_0px,_transparent_50%),radial-gradient(at_69%_49%,_hsla(309,91%,71%,1)_0px,_transparent_50%),radial-gradient(at_94%_14%,_hsla(232,66%,62%,1)_0px,_transparent_50%),radial-gradient(at_19%_93%,_hsla(51,98%,74%,1)_0px,_transparent_50%),radial-gradient(at_15%_80%,_hsla(194,87%,63%,1)_0px,_transparent_50%),radial-gradient(at_56%_52%,_hsla(109,71%,61%,1)_0px,_transparent_50%)] after:bg-[rgba(255,255,255,0.5)]",
     "bg-gradient-to-tr from-[#4158d0] via-[#1888b4] text-white to-[#0f31ca] shadow-[inset_0_-23px_25px_rgba(0,0,0,0.17),inset_0_-36px_30px_rgba(0,0,0,0.15),inset_0_-79px_40px_rgba(0,0,0,0.1),0_2px_1px_rgba(0,0,0,0.06),0_4px_2px_rgba(0,0,0,0.09),0_8px_4px_rgba(0,0,0,0.09),0_16px_8px_rgba(0,0,0,0.09),0_32px_16px_rgba(0,0,0,0.09)]",
-    " bg-gradient-to-tr from-[#4158D0] via-[#C850C0] text-white to-[#FFCC70] shadow-[inset_0_-23px_25px_rgba(0,0,0,0.17),inset_0_-36px_30px_rgba(0,0,0,0.15),inset_0_-79px_40px_rgba(0,0,0,0.1),0_2px_1px_rgba(0,0,0,0.06),0_4px_2px_rgba(0,0,0,0.09),0_8px_4px_rgba(0,0,0,0.09),0_16px_8px_rgba(0,0,0,0.09),0_32px_16px_rgba(0,0,0,0.09)]"
+    "bg-gradient-to-tr from-[#4158D0] via-[#C850C0] text-white to-[#FFCC70] shadow-[inset_0_-23px_25px_rgba(0,0,0,0.17),inset_0_-36px_30px_rgba(0,0,0,0.15),inset_0_-79px_40px_rgba(0,0,0,0.1),0_2px_1px_rgba(0,0,0,0.06),0_4px_2px_rgba(0,0,0,0.09),0_8px_4px_rgba(0,0,0,0.09),0_16px_8px_rgba(0,0,0,0.09),0_32px_16px_rgba(0,0,0,0.09)]"
   ];
 
   const [rendomno, setRendomno] = useState(0);
@@ -58,13 +57,13 @@ export default function Home() {
 
   return (
     <>
-      <div className={`w-screen h-screen  ${designbg[rendomno]}`}>
-        <main className="flex-grow pt-36  lg:h-[calc(100vh-0.1rem)] flex flex-col items-center justify-center px-4 md:px-24 py-12 ">
+      <div className={`w-screen h-full  ${designbg[rendomno]}`}>
+        <main className="flex-grow pt-36 h-full lg:h-[calc(100vh-0.1rem)] flex flex-col items-center justify-center px-4 md:px-24 py-12 ">
           <section className="text-center mb-8 md:mb-12">
             <div
               className="mx-auto w-full  flex flex-col items-center justify-center text-center overflow-visible"
-            > 
-              <h3 className="text-5xl z-50 mb-2 font-bold">Dive into the World of Anonymous Feedback</h3>
+            >
+              <h3 className="md:text-5xl text-2xl z-50 mb-2 font-bold">Dive into the World of Anonymous Feedback</h3>
               <div className="w-full relative flex flex-col items-center justify-center">
                 <div
                   className="absolute inset-x-auto top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-full blur-sm"
@@ -83,7 +82,7 @@ export default function Home() {
                   className="absolute inset-0 w-full h-full bg-background [mask-image:radial-gradient(50%_200px_at_top,transparent_20%,white)]"
                 ></div>
               </div>
-              <p className="mt-3 text-lg">
+              <p className="mt-3 text-md md:text-lg">
                 WhisperBox - Where your identity remains a secret.
               </p>
 
@@ -97,7 +96,7 @@ export default function Home() {
           {/* Carousel for Messages */}
           <Carousel
             plugins={[Autoplay({ delay: 2000 })]}
-            className="w-full max-w-lg md:max-w-xl"
+            className="w-full px-2 md:max-w-xl"
           >
             <CarouselContent>
               {massages.map((message, index) => (

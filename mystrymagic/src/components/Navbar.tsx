@@ -14,8 +14,8 @@ const Navbar = () => {
 
     return (
         <nav className="max-w-full w-full backdrop-blur-sm md:px-14 absolute z-50 ">
-            <div className="max-w-full w-full border-black text-white pt-5 relative overflow-hidden">
-                <div className="flex max-w-screen justify-between px-4 items-center">
+            <div className="max-w-full w-full border-black text-white pt-2 md:pt-5 relative overflow-hidden">
+                <div className="flex max-w-screen justify-between px-2 md:px-4 items-center">
                     <Link href={"/"}>
                         <div>
                             <span className="brutal-subscribe__title block text-xl md:text-4xl font-bold relative z-10 text-shadow-[3px_3px_0_rgb(140,140,19)]">Whisper-Box</span>
@@ -25,7 +25,7 @@ const Navbar = () => {
                     <div className=''> {session ? (
 
                         <div className="flex items-center justify-center">
-                            <span className="mr-4">
+                            <span className="mr-4 hidden md:block">
                                 Welcome, {user?.username || user?.email}
                             </span>
                             <div onClick={() => signOut()} className="w-[100px] h-[40px]">

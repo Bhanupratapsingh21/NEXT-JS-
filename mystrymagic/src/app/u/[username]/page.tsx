@@ -1,18 +1,16 @@
 "use client"
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
+import axios, { AxiosError } from 'axios';
 import { useToast } from '@/hooks/use-toast'; // Assuming toast is from ShadCN's UI library
 import { z } from "zod";
-import { MessagesSchema } from '@/schemas/messageSchema'
+import { MessagesSchema } from '@/schemas/messageSchema';
+import { ApiResponse } from '@/types/ApiResponse';
+
 interface PageProps {
     params: {
         username: string;
     };
 }
-
-// Define the zod schema for validation
-
 
 const Page = ({ params }: PageProps) => {
     const { toast } = useToast();
@@ -23,17 +21,22 @@ const Page = ({ params }: PageProps) => {
         "bg-gradient-to-r from-pink-500 to-orange-500",
         "bg-gradient-to-bl from-indigo-500 to-cyan-500",
         "bg-gradient-to-br from-blue-400 to-purple-400 shadow-lg shadow-gray-200/50 overflow-hidden",
-        "bg-white overflow-hidden cursor-pointer text-white  before:absolute before:w-full before:h-full before:blur-[20px] before:bg-[#faff99] before:bg-[radial-gradient(at_33%_82%,_hsla(254,71%,69%,1)_0px,_transparent_50%),radial-gradient(at_28%_4%,_hsla(289,96%,63%,1)_0px,_transparent_50%),radial-gradient(at_69%_49%,_hsla(309,91%,71%,1)_0px,_transparent_50%),radial-gradient(at_94%_14%,_hsla(232,66%,62%,1)_0px,_transparent_50%),radial-gradient(at_19%_93%,_hsla(51,98%,74%,1)_0px,_transparent_50%),radial-gradient(at_15%_80%,_hsla(194,87%,63%,1)_0px,_transparent_50%),radial-gradient(at_56%_52%,_hsla(109,71%,61%,1)_0px,_transparent_50%)] after:bg-[rgba(255,255,255,0.5)]",
         "bg-gradient-to-tr from-[#4158d0] via-[#1888b4] to-[#0f31ca] shadow-[inset_0_-23px_25px_rgba(0,0,0,0.17),inset_0_-36px_30px_rgba(0,0,0,0.15),inset_0_-79px_40px_rgba(0,0,0,0.1),0_2px_1px_rgba(0,0,0,0.06),0_4px_2px_rgba(0,0,0,0.09),0_8px_4px_rgba(0,0,0,0.09),0_16px_8px_rgba(0,0,0,0.09),0_32px_16px_rgba(0,0,0,0.09)]",
         "bg-gradient-to-tr from-[#4158D0] via-[#C850C0] to-[#FFCC70] shadow-[inset_0_-23px_25px_rgba(0,0,0,0.17),inset_0_-36px_30px_rgba(0,0,0,0.15),inset_0_-79px_40px_rgba(0,0,0,0.1),0_2px_1px_rgba(0,0,0,0.06),0_4px_2px_rgba(0,0,0,0.09),0_8px_4px_rgba(0,0,0,0.09),0_16px_8px_rgba(0,0,0,0.09),0_32px_16px_rgba(0,0,0,0.09)]"
     ];
 
     const [rendomno, setRendomno] = useState(0);
     const [loading, setLoading] = useState(false); // Manage loading state
+    const [suggestmsgloading, setsuggestmsgloading] = useState(false); // Manage loading state
     const [formData, setFormData] = useState({
         name: '',
         message: ''
     });
+
+    useEffect(() => {
+        const randomIndex = Math.floor(Math.random() * designbg.length); // Generate a random index
+        setRendomno(randomIndex);
+    }, []);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({
@@ -65,8 +68,8 @@ const Page = ({ params }: PageProps) => {
             // Replace with your API endpoint
             const res = await axios.post('/api/send-message', {
                 username,
-                anonymousname : formData.name,
-                content : formData.message,
+                anonymousname: formData.name,
+                content: formData.message,
             });
 
             if (res.status === 200) {
@@ -85,9 +88,10 @@ const Page = ({ params }: PageProps) => {
                 });
             }
         } catch (error) {
+            const axiosError = error as AxiosError<ApiResponse>;
             toast({
-                title: "Error",
-                description: "Failed to send message, please try again.",
+                title: `Error`,
+                description: axiosError.response?.data.message || "Error While Sending MSG Pls Try Again",
                 duration: 3000,
                 variant: "destructive",
             });
@@ -96,10 +100,41 @@ const Page = ({ params }: PageProps) => {
         }
     };
 
+    const handleSuggestMsg = async () => {
+        try {
+            setsuggestmsgloading(true);
+            const res = await axios.get('/api/suggest-messages'); // API route to generate the message
+            if (res.status === 200) {
+                const { anonymesname, msg } = res.data;
+                setFormData({
+                    name: anonymesname,
+                    message: msg,
+                });
+            } else {
+                toast({
+                    title: "Error",
+                    description: "Failed to get suggested message",
+                    duration: 3000,
+                    variant: "destructive",
+                });
+            }
+        } catch (error) {
+            const axiosError = error as AxiosError<ApiResponse>;
+            toast({
+                title: "Error",
+                description: axiosError.response?.data.message || "Error fetching suggested message",
+                duration: 3000,
+                variant: "destructive",
+            });
+        } finally {
+            setsuggestmsgloading(false);
+        }
+    };
+
     return (
         <div className={`w-screen pt-24 h-screen ${designbg[rendomno]} flex justify-center items-center`}>
             <div className="max-w-md mx-auto relative overflow-hidden z-10 backdrop-blur-sm p-8 rounded-lg shadow-md ">
-                <h1 className="text-4xl mb-6 font-bold text-white">
+                <h1 className="text-2xl text-center  md:text-4xl mb-6 font-bold text-white">
                     Send MSG To {username}!
                 </h1>
 
@@ -135,12 +170,22 @@ const Page = ({ params }: PageProps) => {
                         <button
                             className={`text-white px-4 py-2 font-bold backdrop-blur-sm border-white border-2 rounded-md hover:opacity-80 w-full ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
                             type="submit"
-                            disabled={loading}
+                            disabled={loading || suggestmsgloading}
                         >
                             {loading ? 'Sending...' : 'Send MSG'}
                         </button>
                     </div>
                 </form>
+
+                <div className="flex justify-center pt-2">
+                    <button
+                        className="text-white px-4 py-2 font-bold border-white border-2 rounded-md w-full hover:opacity-80"
+                        onClick={handleSuggestMsg}
+                        disabled={loading || suggestmsgloading}
+                    >
+                        {suggestmsgloading ? 'Getting MSG By Ai...' : 'Suggest MSG'}
+                    </button>
+                </div>
             </div>
         </div>
     );
