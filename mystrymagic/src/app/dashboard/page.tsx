@@ -69,14 +69,14 @@ const Dashboard = () => {
 
     const onMessageShare = useCallback((shareMsgId: string) => {
         const messageToShare = messages.find(message => message._id === shareMsgId);
-    
+
         if (messageToShare) {
-            if(localStorage.getItem("sharedMessage")) localStorage.removeItem("sharedMessage")
+            if (localStorage.getItem("sharedMessage")) localStorage.removeItem("sharedMessage")
             localStorage.setItem('sharedMessage', JSON.stringify(messageToShare));
         }
         router.push("/dashboard/shareMSG");
     }, [messages]);
-    
+
     const fetchAcceptMessage = useCallback(async () => {
         setIsSwitchLoading(true);
         try {
@@ -170,7 +170,7 @@ const Dashboard = () => {
     };
 
     const cardRef = useRef<HTMLDivElement>(null);
-   
+
     const downloadImage = async () => {
         if (cardRef.current) {
             try {
@@ -283,7 +283,7 @@ const Dashboard = () => {
                         <div className={` ${designbg[no]}  absolute z-5 top-1 left-1 right-1 bottom-2  rounded-[20px]`}>
 
                             <div className="flex h-full justify-center items-center">
-                                <div className="bg-white px-4 py-3 w-40 h-36 rounded-lg">
+                                <div className="bg-white z-8 px-4 py-3 w-40 h-36 rounded-lg">
                                     <div className="card__content px-2">
                                         <h2 className="text-md w-full overflow-hidden text-center px-4 md:px-0 text-black font-bold mb-4">{msg}</h2>
                                         <button
@@ -300,6 +300,10 @@ const Dashboard = () => {
 
                                         </button>
                                     </div>
+                                </div>
+                                <div className="absolute text-center pb-1 bottom-0 z-10">
+                                    <p className="text-white text-xs relative  font-Roboto-md">Powered By WhisperBox</p>
+                                    <p className="text-white text-xs relative  font-Roboto-md">by <a href="https://bhanu-pratap-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer">@bhanu_pratap_2119</a></p>
                                 </div>
                             </div>
                         </div>
@@ -340,7 +344,7 @@ const Dashboard = () => {
                                 key={message._id}
                                 message={message}
                                 onMessageDelete={() => handleMessageDelete(message._id)}
-                                onMessageShare={()=> onMessageShare(message._id)}
+                                onMessageShare={() => onMessageShare(message._id)}
                             />
                         ))
                     ) : (

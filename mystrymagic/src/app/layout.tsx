@@ -4,7 +4,8 @@ import "./globals.css";
 import AuthProvider from "@/context/AuthProvider";
 import { Toaster } from "@/components/ui/toaster"
 import Navbar from "@/components/Navbar";
-
+import { Analytics } from "@vercel/analytics/react"
+import Head from 'next/head';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <link rel="shortcut icon" href="/logo.png" type="image" />
+      <Head>
+        <link rel="shortcut icon" href="/logo.png" type="image/png" />
+      </Head>
       <AuthProvider>
         <body className={inter.className}>
           <Navbar />
@@ -28,6 +31,7 @@ export default function RootLayout({
           <Toaster />
         </body>
       </AuthProvider>
+      <Analytics />
     </html>
   );
 }

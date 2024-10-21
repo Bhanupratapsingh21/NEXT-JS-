@@ -5,6 +5,7 @@ import { useToast } from '@/hooks/use-toast'; // Assuming toast is from ShadCN's
 import { z } from "zod";
 import { MessagesSchema } from '@/schemas/messageSchema';
 import { ApiResponse } from '@/types/ApiResponse';
+import Image from 'next/image';
 
 interface PageProps {
     params: {
@@ -132,7 +133,7 @@ const Page = ({ params }: PageProps) => {
     };
 
     return (
-        <div className={`w-screen pt-24 h-screen ${designbg[rendomno]} flex justify-center items-center`}>
+        <div className={` max-w-screen pt-24 h-full ${designbg[rendomno]} flex justify-center items-center`}>
             <div className="max-w-md md:max-w-xl mx-auto relative overflow-hidden z-10 backdrop-blur-sm p-8 rounded-lg shadow-md ">
                 <h1 className="text-2xl text-center  md:text-4xl mb-6 font-bold text-white">
                     Send MSG To {username}!
@@ -185,6 +186,23 @@ const Page = ({ params }: PageProps) => {
                     >
                         {suggestmsgloading ? 'Getting MSG By Ai...' : 'Suggest MSG'}
                     </button>
+                </div>
+                <div className="flex justify-center pt-2">
+                    <button
+                        className="text-white flex justify-center items-center px-4 py-2 font-bold border-white border-2 rounded-md w-full hover:opacity-80"
+                    >
+                        <Image
+                            src="/logo.png"
+                            alt="Whisper Box Logo"
+                            width={20}
+                            height={20}
+                        />
+                        <span className="ml-2">Get Your OWN</span>
+                    </button>
+                </div>
+                <div className="text-center py-4 bottom-0">
+                    <p className="text-white text-xs relative  font-Roboto-md">Powered By WhisperBox</p>
+                    <p className="text-white text-xs relative  font-Roboto-md">by <a href="https://bhanu-pratap-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer">@bhanu_pratap_2119</a></p>
                 </div>
             </div>
         </div>

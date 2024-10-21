@@ -113,12 +113,12 @@ const ShareMSGDashboard = () => {
                             Download IMG To Share
                         </Button>
                         <Button
-                            onClick={()=> router.push("/dashboard")}
+                            onClick={() => router.push("/dashboard")}
                             className="flex items-center justify-center w-full  mt-4 gap-2"
                             disabled={isLoading}
                         >
                             {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
-                              Back
+                            Back
                         </Button>
                     </div>
 
@@ -129,11 +129,15 @@ const ShareMSGDashboard = () => {
 
                     <div ref={cardRef} className={`relative w-[205px] h-[395px] bg-black rounded-[20px] ${designBgs[designIndex]}`}>
                         <div className="flex h-full justify-center items-center">
-                            <div className="bg-white px-4 py-3 w-40 min-h-36 flex justify-center items-center rounded-lg">
+                            <div className="bg-white  z-8 px-4 py-3 w-40 min-h-36 flex justify-center items-center rounded-lg">
                                 <div className="card__content px-2">
                                     {showname && (<h2 className='text-sm w-full overflow-hidden text-center px-4 md:px-0 text-black font-bold mb-4'>By : {message?.anonymousname || "No message"}</h2>)}
                                     <h2 className='text-md w-full overflow-hidden text-center px-4 md:px-0 text-black font-bold mb-4'>{message?.content || "No message"}</h2>
                                 </div>
+                            </div>
+                            <div className="absolute text-center pb-1 bottom-0 z-10">
+                                <p className="text-white text-xs relative  font-Roboto-md">Powered By WhisperBox</p>
+                                <p className="text-white text-xs relative  font-Roboto-md">by <a href="https://bhanu-pratap-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer">@bhanu_pratap_2119</a></p>
                             </div>
                         </div>
                     </div>
