@@ -62,7 +62,7 @@ export default function Home() {
 
   return (
     <>
-      <div className={`w-screen h-full md:h-screen ${designbg[rendomno]}`}>
+      <div className={`w-screen min-h-screen ${designbg[rendomno]}`}>
         <main className="flex-grow pt-36 md:pt-48  flex flex-col items-center justify-center px-4 md:px-24 py-24 ">
           <section className="text-center mb-8 md:mb-12">
             <div
