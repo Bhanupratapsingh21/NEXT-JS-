@@ -26,7 +26,7 @@ WhisperBox is a modern and sleek anonymous feedback and Q&A platform, inspired b
 | Feature          | Screenshot |
 |------------------|------------|
 | Dashboard        | ![Dashboard](https://res.cloudinary.com/dhvkjanwa/image/upload/v1729522297/Screenshot_2024-10-21_at_20-16-41_Whisper-Box_qbhfss.png) |
-| Anonymous Message | ![Anonymous Message]([path-to-image](https://res.cloudinary.com/dhvkjanwa/image/upload/v1729522297/Screenshot_2024-10-21_at_20-18-48_Whisper-Box_db1htk.png)) |
+| Anonymous Message | ![Anonymous Message](https://res.cloudinary.com/dhvkjanwa/image/upload/v1729522297/Screenshot_2024-10-21_at_20-18-48_Whisper-Box_db1htk.png) |
 | Message Share    | ![Message Share](https://res.cloudinary.com/dhvkjanwa/image/upload/v1729522297/Screenshot_2024-10-21_at_20-16-59_Whisper-Box_aumtll.png) |
 | Home     | ![Share MSG](https://res.cloudinary.com/dhvkjanwa/image/upload/v1729522298/Screenshot_2024-10-21_at_20-13-54_Whisper-Box_i96jpu.png) |
 | Share MSG IMG     | ![Share MSG](https://res.cloudinary.com/dhvkjanwa/image/upload/v1729522297/Screenshot_2024-10-21_at_20-16-59_Whisper-Box_aumtll.png) |
