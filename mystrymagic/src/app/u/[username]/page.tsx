@@ -197,7 +197,7 @@ const Page = ({ params }: PageProps) => {
                             width={20}
                             height={20}
                         />
-                        <span className="ml-2">Get Your OWN</span>
+                        <a href="https://whisper-box01.vercel.app/sign-up" target="_blank" rel="noopener noreferrer"><span className="ml-2">Get Your OWN</span></a>
                     </button>
                 </div>
                 <div className="text-center py-4 bottom-0">

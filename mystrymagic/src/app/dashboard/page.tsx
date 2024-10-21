@@ -302,8 +302,8 @@ const Dashboard = () => {
                                     </div>
                                 </div>
                                 <div className="absolute text-center pb-1 bottom-0 z-10">
-                                    <p className="text-white text-xs relative  font-Roboto-md">Powered By WhisperBox</p>
-                                    <p className="text-white text-xs relative  font-Roboto-md">by <a href="https://bhanu-pratap-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer">@bhanu_pratap_2119</a></p>
+                                    <p className="text-white text-[8px] relative  font-Roboto-md">Powered By WhisperBox</p>
+                                    <p className="text-white text-[8px] relative  font-Roboto-md">by <a href="https://bhanu-pratap-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer">@bhanu_pratap_2119</a></p>
                                 </div>
                             </div>
                         </div>
