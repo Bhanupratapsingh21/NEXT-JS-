@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useSession, signOut } from "next-auth/react"
 import { User } from 'next-auth'
 import { Button } from './ui/button'
-
+import Image from 'next/image'
 const Navbar = () => {
     const { data: session } = useSession();
 
@@ -13,13 +13,24 @@ const Navbar = () => {
 
 
     return (
-        <nav className="max-w-full w-full backdrop-blur-sm md:px-14 absolute z-50 ">
-            <div className="max-w-full w-full border-black text-white pt-2 md:pt-5 relative overflow-hidden">
+        <nav className="max-w-full border-b-2 border-black fixed w-full backdrop-blur-sm md:px-14 z-50 ">
+            <div className="max-w-full w-full border-black text-white py-2 md:py-5 relative overflow-hidden">
                 <div className="flex max-w-screen justify-between px-2 md:px-4 items-center">
+
                     <Link href={"/"}>
+
+
                         <div>
-                            <span className="brutal-subscribe__title block text-xl md:text-4xl font-bold relative z-10 text-shadow-[3px_3px_0_rgb(140,140,19)]">Whisper-Box</span>
-                            <span className="brutal-subscribe__subtitle block text-sm relative z-10">Shhh... Your identity remains a secret.</span>
+                            <div className='flex justify-center items-center'>
+                                <Image
+                                    src="/logo.png"   // No need to include 'public' in the path
+                                    alt="Whisper Box Logo"
+                                    width={30}        // Set the desired width
+                                    height={30}       // Set the desired height
+                                />
+                                <span className="brutal-subscribe__title block text-xl md:text-4xl font-bold relative z-10 text-shadow-[3px_3px_0_rgb(140,140,19)]">Whisper-Box</span>
+                            </div>
+                            <span className="brutal-subscribe__subtitle hidden md:block text-sm relative z-10">Shhh... Your identity remains a secret.</span>
                         </div>
                     </Link>
                     <div className=''> {session ? (

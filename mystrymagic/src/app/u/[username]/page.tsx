@@ -133,7 +133,7 @@ const Page = ({ params }: PageProps) => {
 
     return (
         <div className={`w-screen pt-24 h-screen ${designbg[rendomno]} flex justify-center items-center`}>
-            <div className="max-w-md mx-auto relative overflow-hidden z-10 backdrop-blur-sm p-8 rounded-lg shadow-md ">
+            <div className="max-w-md md:max-w-xl mx-auto relative overflow-hidden z-10 backdrop-blur-sm p-8 rounded-lg shadow-md ">
                 <h1 className="text-2xl text-center  md:text-4xl mb-6 font-bold text-white">
                     Send MSG To {username}!
                 </h1>
