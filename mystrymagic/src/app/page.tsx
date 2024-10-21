@@ -22,20 +22,25 @@ import { Mail } from "lucide-react";
 export default function Home() {
   const massages = [
     {
-      "title": "Message from User123",
+      "title": "Message from Your EX ??",
       "content": "Hey, how are you doing today?",
       "received": "10 minutes ago"
     },
     {
       "title": "Message from SecretAdmirer",
-      "content": "I really liked your recent post!",
+      "content": "I really like you Are You Single?",
       "received": "2 hours ago"
     },
     {
       "title": "Message from MysteryGuest",
-      "content": "Do you have any book recommendations?",
+      "content": "Do you have any Crush?",
       "received": "1 day ago"
-    }
+    },
+    {
+      "title": "Message from human21352",
+      "content": "you fav movie?",
+      "received": "1 min ago"
+    },
   ]
 
   const designbg = [
@@ -57,8 +62,8 @@ export default function Home() {
 
   return (
     <>
-      <div className={`w-screen h-full  ${designbg[rendomno]}`}>
-        <main className="flex-grow pt-36 h-full lg:h-[calc(100vh-0.1rem)] flex flex-col items-center justify-center px-4 md:px-24 py-12 ">
+      <div className={`w-screen h-full md:h-screen ${designbg[rendomno]}`}>
+        <main className="flex-grow pt-36 md:pt-48  flex flex-col items-center justify-center px-4 md:px-24 py-24 ">
           <section className="text-center mb-8 md:mb-12">
             <div
               className="mx-auto w-full  flex flex-col items-center justify-center text-center overflow-visible"
