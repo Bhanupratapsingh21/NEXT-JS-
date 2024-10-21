@@ -94,9 +94,9 @@ const ShareMSGDashboard = () => {
     return (
         <div className="pt-12 md:pt-24 md:px-16 min-h-screen bg-gradient-to-br from-blue-400 to-purple-400">
             <main className="pt-10 md:flex md:justify-between flex  md:flex-row flex-col-reverse justify-center md:items-start">
-                <div className=''>
+                <div >
 
-                    <h1 className="text-xl hidden md:block md:text-4xl max-w-screen px-4 md:px-0 text-white font-bold mb-4">Share MSG On Social Media App's</h1>
+                    <h1 className="text-xl hidden md:block md:text-4xl max-w-screen px-4 md:px-0 text-white font-bold mb-4">Share MSG On Social Media App&apos;s</h1>
                     <div className="gap-6 pb-4 px-4 my-4 md:mb-0 w-full">
                         <Button onClick={toggleDesign} className="w-full mt-4">
                             Toggle Color

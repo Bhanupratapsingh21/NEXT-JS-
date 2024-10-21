@@ -202,7 +202,7 @@ const Dashboard = () => {
     return (
         <div className="pt-12 md:pt-24 md:px-16 min-h-screen bg-gradient-to-br from-blue-400 to-purple-400">
             <main className="pt-10 md:flex md:justify-between flex  md:flex-row flex-col-reverse justify-center md:items-start">
-                <div className=''>
+                <div>
 
                     <h1 className="text-xl hidden md:block md:text-4xl max-w-screen px-4 md:px-0 text-white font-bold mb-4">{user.username}&apos;s Dashboard</h1>
 
@@ -226,7 +226,7 @@ const Dashboard = () => {
                                 onCheckedChange={handleSwitchChange}
                                 disabled={isSwitchLoading}
                             />
-                            <span className="ml-2 text-white">Accept Messages: {acceptMessages ? 'On' : 'Off'}</span>
+                            <span className="ml-2 text-white">Accept Messages: {acceptMessages ? "On" : "Off"}</span>
                         </div>
                         <button
                             onClick={downloadImage}
@@ -277,7 +277,7 @@ const Dashboard = () => {
                 </div>
                 <div className="flex flex-col justify-center items-center">
 
-                    <h1 className="text-xl md:hidden block md:text-4xl max-w-screen px-4 md:px-0 text-white font-bold mb-4">{user.username}'s Dashboard</h1>
+                    <h1 className="text-xl md:hidden block md:text-4xl max-w-screen px-4 md:px-0 text-white font-bold mb-4">{user.username}&apos;s Dashboard</h1>
                     <div ref={cardRef} className="relative w-[205px] h-[395px] bg-black rounded-[20px]">
                         {/* we have to download this whole div */}
                         <div className={` ${designbg[no]}  absolute z-5 top-1 left-1 right-1 bottom-2  rounded-[20px]`}>
@@ -285,7 +285,7 @@ const Dashboard = () => {
                             <div className="flex h-full justify-center items-center">
                                 <div className="bg-white px-4 py-3 w-40 h-36 rounded-lg">
                                     <div className="card__content px-2">
-                                        <h2 className='text-md w-full overflow-hidden text-center px-4 md:px-0 text-black font-bold mb-4'>{msg}</h2>
+                                        <h2 className="text-md w-full overflow-hidden text-center px-4 md:px-0 text-black font-bold mb-4">{msg}</h2>
                                         <button
 
                                             className="flex overflow-hidden items-center text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-black text-white shadow hover:bg-black/90 h-9 px-4 py-2 md:max-w-52 whitespace-pre md:flex group relative w-full justify-center gap-2 rounded-md transition-all duration-300 ease-out hover:ring-2 hover:ring-black hover:ring-offset-2"
@@ -305,7 +305,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                     <div className="md:px-0 px-4 mb-3 md:mb-0 w-full">
-                        <h1 className="text-xl mt-4 md:hidden block md:text-4xl px-4 md:px-0 text-white font-bold mb-4">Share On Social Media App's</h1>
+                        <h1 className="text-xl mt-4 md:hidden block md:text-4xl px-4 md:px-0 text-white font-bold mb-4">Share On Social Media App&apos;s</h1>
                         <button
                             onClick={() => setno((pravno) => pravno >= designbg.length - 1 ? 0 : pravno + 1)}
                             className="flex mt-4  overflow-hidden items-center text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-black text-white shadow hover:bg-black/90 h-9 px-4 py-2  whitespace-pre md:flex group relative w-full justify-center  rounded-md transition-all duration-300 ease-out hover:ring-2 hover:ring-black hover:ring-offset-2"
@@ -332,7 +332,7 @@ const Dashboard = () => {
 
             </main>
             <main className="pt-10">
-                <h1 className="text-xl md:text-4xl px-4 md:px-0 text-white font-bold mb-4">MSG'S</h1>
+                <h1 className="text-xl md:text-4xl px-4 md:px-0 text-white font-bold mb-4">MSG&apos;S</h1>
                 <div className="mt-4 px-4 py-4 grid text-white grid-cols-1 xl:grid-cols-2 gap-6">
                     {messages.length > 0 ? (
                         messages.map((message) => (

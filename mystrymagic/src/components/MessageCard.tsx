@@ -134,7 +134,7 @@ const MessageCard = ({ message, onMessageDelete, onMessageShare }: MessageCardPr
                         ></span>
                         <div className="flex items-center">
 
-                            <span className="ml-1 text-white">Share On Social's</span>
+                            <span className="ml-1 text-white">Share On Social&apos;s</span>
                         </div>
                         <div className="flex items-center gap-1 text-sm md:flex">
                             <svg
