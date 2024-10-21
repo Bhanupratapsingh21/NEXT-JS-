@@ -283,7 +283,7 @@ const Dashboard = () => {
                         <div className={` ${designbg[no]}  absolute z-5 top-1 left-1 right-1 bottom-2  rounded-[20px]`}>
 
                             <div className="flex h-full justify-center items-center">
-                                <div className="bg-white z-8 px-4 py-3 w-40 h-36 rounded-lg">
+                                <div className="bg-white z-8 px-2 md:px-4 py-3 w-40 min-h-36 rounded-lg">
                                     <div className="card__content px-2">
                                         <h2 className="text-md w-full overflow-hidden text-center px-4 md:px-0 text-black font-bold mb-4">{msg}</h2>
                                         <button
