@@ -90,7 +90,7 @@ const Page = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-[#f89b29] to-[#ff0f7b] overflow-hidden">
-      <div className="w-full max-w-md mt-20 p-6 space-y-4 md:border-2 md:border-black shadow-[4px_4px_0px_0px_black] rounded-lg">
+      <div className="w-full max-w-md mt-24 p-6 space-y-4 md:border-2 md:border-black shadow-[4px_4px_0px_0px_black] rounded-lg">
         <div className="text-center text-white">
           <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-3">
             Join <br /> Whisper-Box

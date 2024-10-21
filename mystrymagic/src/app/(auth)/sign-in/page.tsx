@@ -52,7 +52,7 @@ export default function SignInForm() {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-[#f89b29] to-[#ff0f7b] overflow-hidden">
-      <div className="w-full mt-20 max-w-md pt-6 p-5 bg-lightblue flex flex-col items-start justify-center gap-5 rounded-md md:border-2 md:border-black shadow-[4px_4px_0px_0px_black]">
+      <div className="w-full mt-24 max-w-md pt-6 p-5 bg-lightblue flex flex-col items-start justify-center gap-5 rounded-md md:border-2 md:border-black shadow-[4px_4px_0px_0px_black]">
         <div className="text-center text-white">
           <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-3">
             Welcome Back to Whisper Box
