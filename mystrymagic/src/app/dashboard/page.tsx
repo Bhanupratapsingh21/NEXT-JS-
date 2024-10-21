@@ -337,7 +337,7 @@ const Dashboard = () => {
             </main>
             <main className="pt-10">
                 <h1 className="text-xl md:text-4xl px-4 md:px-0 text-white font-bold mb-4">MSG&apos;S</h1>
-                <div className="mt-4 px-4 py-4 grid text-white grid-cols-1 xl:grid-cols-2 gap-6">
+                <div className={`mt-4 px-4 ${messages.length > 0 ? "grid-cols-1 xl:grid-cols-2" : ""} py-4 grid text-white gap-6`}>
                     {messages.length > 0 ? (
                         messages.map((message) => (
                             <MessageCard
@@ -348,7 +348,7 @@ const Dashboard = () => {
                             />
                         ))
                     ) : (
-                        <p className="text-white text-center md:px-0 px-4">No messages to display.</p>
+                        <p className="text-white flex justify-center items-center text-center md:px-0 px-4">No messages to display.</p>
                     )}
                 </div>
 
