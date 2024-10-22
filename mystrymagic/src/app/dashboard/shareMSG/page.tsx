@@ -127,9 +127,9 @@ const ShareMSGDashboard = () => {
                 </div>
                 <div className="flex flex-col justify-center items-center">
 
-                    <div ref={cardRef} className={`relative w-[205px] h-[395px] bg-black rounded-[20px] ${designBgs[designIndex]}`}>
+                    <div ref={cardRef} className={`relative w-[225px] h-[435px] rounded-[20px] ${designBgs[designIndex]}`}>
                         <div className="flex h-full justify-center items-center">
-                            <div className="bg-white  z-8 px-4 py-3 w-40 min-h-36 flex justify-center items-center rounded-lg">
+                            <div className="bg-white  z-8 px-4 py-3 max-w-36 min-h-32 flex justify-center items-center rounded-lg">
                                 <div className="card__content px-2">
                                     {showname && (<h2 className='text-sm w-full overflow-hidden text-center px-4 md:px-0 text-black font-bold mb-4'>By : {message?.anonymousname || "No message"}</h2>)}
                                     <h2 className='text-md w-full overflow-hidden text-center px-4 md:px-0 text-black font-bold mb-4'>{message?.content || "No message"}</h2>

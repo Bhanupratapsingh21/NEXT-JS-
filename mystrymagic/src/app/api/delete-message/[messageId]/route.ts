@@ -7,7 +7,7 @@ import { NextResponse } from 'next/server'; // Ensure you import NextResponse
 
 export async function DELETE(request: Request, { params }: { params: { messageId: string } }) {
     const messageId = params.messageId;
-    console.log(messageId);
+    //console.log(messageId);
     
     // Connect to the database
     await dbConnect();
@@ -31,7 +31,7 @@ export async function DELETE(request: Request, { params }: { params: { messageId
             { $pull: { messages: { _id: messageId } } }
         );
         
-        console.log(updateResult);
+        //console.log(updateResult);
 
         // Check if the message was successfully deleted
         if (updateResult.modifiedCount === 0) {

@@ -278,12 +278,12 @@ const Dashboard = () => {
                 <div className="flex flex-col justify-center items-center">
 
                     <h1 className="text-xl md:hidden block md:text-4xl max-w-screen px-4 md:px-0 text-white font-bold mb-4">{user.username}&apos;s Dashboard</h1>
-                    <div ref={cardRef} className="relative w-[205px] h-[395px] bg-black rounded-[20px]">
+                    <div ref={cardRef} className="relative w-[225px] h-[435px]">
                         {/* we have to download this whole div */}
                         <div className={` ${designbg[no]}  absolute z-5 top-1 left-1 right-1 bottom-2  rounded-[20px]`}>
 
                             <div className="flex h-full justify-center items-center">
-                                <div className="bg-white z-8 px-2 md:px-4 py-3 w-40 min-h-36 rounded-lg">
+                                <div className="bg-white z-8 px-2 md:px-4 py-3 max-w-36 min-h-32 rounded-lg">
                                     <div className="card__content px-2">
                                         <h2 className="text-md w-full overflow-hidden text-center px-4 md:px-0 text-black font-bold mb-4">{msg}</h2>
                                         <button
