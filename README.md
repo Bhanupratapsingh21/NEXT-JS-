@@ -17,6 +17,9 @@ WhisperBox is a modern and sleek anonymous feedback and Q&A platform, inspired b
 - **Frontend**
 - **Authentication**
 - **Database**
+- **NEXT AUTH**
+- **ZOD**
+- **Shad-CN**
 - **Deployment**
 - **Styling**
 - **Form Validation**
